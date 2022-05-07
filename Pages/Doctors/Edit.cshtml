@@ -1,0 +1,65 @@
+@page
+@model hosApp.Pages.Doctors.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Doctor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Doctor.ID" />
+            <div class="form-group">
+                <label asp-for="Doctor.FirstName" class="control-label"></label>
+                <input asp-for="Doctor.FirstName" class="form-control" />
+                <span asp-validation-for="Doctor.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor.LastName" class="control-label"></label>
+                <input asp-for="Doctor.LastName" class="form-control" />
+                <span asp-validation-for="Doctor.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor.Gender" class="control-label"></label>
+                <input asp-for="Doctor.Gender" class="form-control" />
+                <span asp-validation-for="Doctor.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor.Tel" class="control-label"></label>
+                <input asp-for="Doctor.Tel" class="form-control" />
+                <span asp-validation-for="Doctor.Tel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor.Adress" class="control-label"></label>
+                <input asp-for="Doctor.Adress" class="form-control" />
+                <span asp-validation-for="Doctor.Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor.Email" class="control-label"></label>
+                <input asp-for="Doctor.Email" class="form-control" />
+                <span asp-validation-for="Doctor.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor.Speciality" class="control-label"></label>
+                <input asp-for="Doctor.Speciality" class="form-control" />
+                <span asp-validation-for="Doctor.Speciality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

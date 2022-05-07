@@ -1,0 +1,55 @@
+@page
+@model hosApp.Pages.Consultations.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Consultation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Consultation.IdDoctor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consultation.IdDoctor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Consultation.Weight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consultation.Weight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Consultation.Height)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consultation.Height)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Consultation.diagnostic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consultation.diagnostic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Consultation.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consultation.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Consultation.Case)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Consultation.Case.ID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Consultation.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

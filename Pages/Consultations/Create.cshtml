@@ -1,0 +1,57 @@
+@page
+@model hosApp.Pages.Consultations.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Consultation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Consultation.IdDoctor" class="control-label"></label>
+                <select asp-for="Consultation.IdDoctor" class="form-control" asp-items="ViewBag.IdDoctor"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consultation.Weight" class="control-label"></label>
+                <input asp-for="Consultation.Weight" class="form-control" />
+                <span asp-validation-for="Consultation.Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consultation.Height" class="control-label"></label>
+                <input asp-for="Consultation.Height" class="form-control" />
+                <span asp-validation-for="Consultation.Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consultation.diagnostic" class="control-label"></label>
+                <input asp-for="Consultation.diagnostic" class="form-control" />
+                <span asp-validation-for="Consultation.diagnostic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consultation.Date" class="control-label"></label>
+                <input asp-for="Consultation.Date" class="form-control" />
+                <span asp-validation-for="Consultation.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consultation.idCase" class="control-label"></label>
+                <select asp-for="Consultation.idCase" class="form-control" asp-items="ViewBag.idCase"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
