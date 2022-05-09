@@ -11,14 +11,15 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
 <form class="d-flex">
     <input class="form-control me-2" type="search" placeholder="Search" asp-route="" asp-for="SearchString"
         aria-label="Search">
 
     <select class="form-select" aria-label="Default select example">
+
         <option value="Name">Name</option>
         <option value="Speciality">Speciality</option>
-        <option value="3">Three</option>
     </select>
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>

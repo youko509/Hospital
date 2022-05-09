@@ -22,7 +22,7 @@ namespace hosApp.Pages.Consultations
         public IActionResult OnGet()
         {
             ViewData["idCase"] = new SelectList(_context.Case, "ID", "ID");
-            ViewData["idDoctor"] = new SelectList(_context.Doctor, "ID", "ID");
+            ViewData["idDoctor"] = new SelectList(_context.Doctor, "ID", "FirstName");
             return Page();
         }
 

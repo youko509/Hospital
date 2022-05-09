@@ -24,10 +24,6 @@ public class hospital : DbContext
             .WithOne(i => i.Consultation)
             .HasForeignKey<Prescription>(b => b.idConsul);
 
-        modelBuilder.Entity<Case>()
-        .HasOne(b => b.Consultation)
-        .WithOne(i => i.Case)
-        .HasForeignKey<Consultation>(b => b.idCase);
     }
 
     public DbSet<hosApp.Models.Doctor> Doctor { get; set; }

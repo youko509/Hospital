@@ -30,14 +30,12 @@ namespace hosApp.Pages.Consultations
                 return NotFound();
             }
 
-            Consultation = await _context.Consultation
-                .Include(c => c.Case).FirstOrDefaultAsync(m => m.ID == id);
+            Consultation = await _context.Consultation.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Consultation == null)
             {
                 return NotFound();
             }
-           ViewData["idCase"] = new SelectList(_context.Case, "ID", "ID");
             return Page();
         }
 

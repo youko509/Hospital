@@ -10,7 +10,7 @@ namespace hosApp.Models
         public DateTime Date { get; set; }
         public int PatientRef { get; set; }
         public Patient Patient { get; set; }
-        public Consultation Consultation { get; set; }
+        public List<Consultation> Consultations { get; set; }
 
     }
 }
