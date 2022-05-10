@@ -21,7 +21,9 @@ namespace hosApp.Pages.Cases
 
         public IActionResult OnGet()
         {
-            ViewData["PatientRef"] = new SelectList(_context.Patient, "ID", "ID");
+            ViewData["PatientRef"] = new SelectList(_context.Patient, "ID", "FirstName");
+
+
             return Page();
         }
 
@@ -35,10 +37,29 @@ namespace hosApp.Pages.Cases
             {
                 return Page();
             }
+            try
+            {
+                var random = new Random();
+                var list = new List<string>{ "0","A","1","B","2","C","D","H","3","I","J","4","K","5","L","6",
+                    "M","N","7","O","8","P","Q","9","R","S","T","U","V","W","X","Y","Z"};
+                int index;
+                int i = 0;
+                string t = "";
+                while (i <= 7)
+                {
+                    index = random.Next(list.Count);
+                    t = t + list[index];
+                    i++;
+                }
+                Case.Code = t;
+                Case.Date = DateTime.Now;
+                _context.Case.Add(Case);
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
 
-            _context.Case.Add(Case);
-            await _context.SaveChangesAsync();
-
+            }
             return RedirectToPage("./Index");
         }
     }

@@ -38,6 +38,9 @@
                 @Html.DisplayNameFor(model => model.Consultation[0].Date)
             </th>
             <th>
+                Patient Name
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Consultation[0].idCase)
             </th>
             <th></th>
@@ -68,6 +71,24 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
+                @foreach (var item2 in Model.Case)
+                {
+                    @if (item.idCase == item2.ID)
+                    {
+                        @foreach (var item3 in Model.Patient)
+                        {
+                            @if (item2.PatientRef == item3.ID)
+                            {
+                                @if (item.idCase == item2.ID)
+                                {
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item3.FirstName)
+                                    </td>
+                                }
+                            }
+                        }
+                    }
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.idCase)
                 </td>
