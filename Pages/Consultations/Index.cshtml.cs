@@ -42,19 +42,21 @@ namespace hosApp.Pages.Consultations
 
             if (!string.IsNullOrEmpty(SearchString))
             {
+                Patient patient = new Patient();
                 Doctor doctor = new Doctor();
-                Console.Write(SearchString);
+                Case case1 = new Case();
+                Console.WriteLine(SearchString);
                 try
                 {
-                    doctor.ID = doctors.First(s => s.FirstName.Contains(SearchString)).ID;
+                    patient.ID = patients.First(s => s.FirstName.Contains(SearchString) || s.LastName.Contains(SearchString)).ID;
+                    case1.ID = cases.First(s => s.PatientRef == patient.ID).ID;
+                    Console.WriteLine(case1.ID + "yes");
                 }
-                catch (InvalidOperationException)
-                {
-
-                }
-                consultations = consultations.Where(s => s.IdDoctor == doctor.ID);
-                doctors = doctors.Where(s => s.FirstName.Contains(SearchString));
-
+                catch { }
+                Console.WriteLine(case1.ID);
+                consultations = consultations.Where(s => s.idCase == case1.ID);
+                // doctors = doctors.Where(s => s.FirstName.Contains(SearchString));
+                Console.WriteLine("test successed");
             }
             Doctor = await doctors.ToListAsync();
             Case = await cases.ToListAsync();

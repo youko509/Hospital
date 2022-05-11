@@ -21,7 +21,12 @@ namespace hosApp.Pages.Consultations
 
         public IActionResult OnGet()
         {
-            ViewData["idCase"] = new SelectList(_context.Case, "ID", "PatientRef");
+            var cases = from m in _context.Case
+                        select m;
+            var patients = from m in _context.Patient
+                           select m;
+
+            ViewData["idCase"] = new SelectList(_context.Case, "ID", "Code");
             ViewData["idDoctor"] = new SelectList(_context.Doctor, "ID", "FirstName");
             return Page();
         }
@@ -36,7 +41,7 @@ namespace hosApp.Pages.Consultations
             {
                 return Page();
             }
-
+            Consultation.Date = DateTime.Now;
             _context.Consultation.Add(Consultation);
             await _context.SaveChangesAsync();
 
