@@ -45,18 +45,17 @@ namespace hosApp.Pages.Consultations
                 Patient patient = new Patient();
                 Doctor doctor = new Doctor();
                 Case case1 = new Case();
-                Console.WriteLine(SearchString);
+
                 try
                 {
                     patient.ID = patients.First(s => s.FirstName.Contains(SearchString) || s.LastName.Contains(SearchString)).ID;
                     case1.ID = cases.First(s => s.PatientRef == patient.ID).ID;
-                    Console.WriteLine(case1.ID + "yes");
+
                 }
                 catch { }
                 Console.WriteLine(case1.ID);
                 consultations = consultations.Where(s => s.idCase == case1.ID);
                 // doctors = doctors.Where(s => s.FirstName.Contains(SearchString));
-                Console.WriteLine("test successed");
             }
             Doctor = await doctors.ToListAsync();
             Case = await cases.ToListAsync();

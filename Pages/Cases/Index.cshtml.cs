@@ -30,11 +30,17 @@ namespace hosApp.Pages.Cases
         {
             var cases = from m in _context.Case
                         select m;
-            if (!string.IsNullOrEmpty(SearchString))
+            var patients = from m in _context.Patient
+                           select m;
+            Patient patient = new Patient();
+            try
             {
-                cases = cases.Where(s => s.Patient.FirstName.Contains(SearchString));
+                patient.ID = patients.First(s => s.FirstName.Contains(SearchString) || s.LastName.Contains(SearchString)).ID;
+
             }
-            Case = await _context.Case
+            catch { }
+            cases = cases.Where(s => s.PatientRef == patient.ID);
+            Case = await cases
                 .Include(p => p.Patient).ToListAsync();
         }
     }
